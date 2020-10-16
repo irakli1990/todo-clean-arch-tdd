@@ -15,24 +15,24 @@ namespace tests
 {
     public class TodoUseCaseUnitTest
     {
-        private readonly Mock<TodoRepository> todoRepository;
-        private readonly GetTodoUseCase getTodoUseCase;
-        private List<Todo> todos;
-        private Pair<Failure, List<Todo>> pair;
+        private readonly Mock<CityRepository> todoRepository;
+        private readonly GetCitiesUseCase getTodoUseCase;
+        private List<City> todos;
+        private Pair<Failure, List<City>> pair;
 
         public TodoUseCaseUnitTest()
         {
-            todoRepository = new Mock<TodoRepository>();
-            getTodoUseCase = new GetTodoUseCase(todoRepository.Object);
-            todos = new List<Todo>();
-            pair = new Pair<Failure, List<Todo>>(null, todos);
+            todoRepository = new Mock<CityRepository>();
+            getTodoUseCase = new GetCitiesUseCase(todoRepository.Object);
+            todos = new List<City>();
+            pair = new Pair<Failure, List<City>>(null, todos);
         }
 
         [Fact]
         public async void GetToDoUseCase_Should_Call_GetToDo_When_Execiuted()
         {
             // Arrange
-            todoRepository.Setup(m => m.GetTodos()).Returns(Task.FromResult(pair));
+            todoRepository.Setup(m => m.GetCities()).Returns(Task.FromResult(pair));
             // Act
            var result = await getTodoUseCase.execiute(It.IsAny<NoParams>());
             // Asert
