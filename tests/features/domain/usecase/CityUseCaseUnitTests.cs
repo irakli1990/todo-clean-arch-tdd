@@ -13,14 +13,14 @@ using Xunit;
 
 namespace tests
 {
-    public class TodoUseCaseUnitTest
+    public class CityUseCaseUnitTests
     {
         private readonly Mock<CityRepository> todoRepository;
         private readonly GetCitiesUseCase getTodoUseCase;
         private List<City> todos;
         private Pair<Failure, List<City>> pair;
 
-        public TodoUseCaseUnitTest()
+        public CityUseCaseUnitTests()
         {
             todoRepository = new Mock<CityRepository>();
             getTodoUseCase = new GetCitiesUseCase(todoRepository.Object);

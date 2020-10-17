@@ -8,8 +8,8 @@ using webapi.src.feature.todo.domain.entity;
 
 namespace webapi.src.feature.todo.domain.repository
 {
-    public interface TodoRepository
+    public interface CityRepository
     {
-        Task<Pair<Failure, List<Todo>>> GetTodos();
+        Task<Pair<Failure, List<City>>> GetCities();
     }
 }

@@ -123,3 +123,7 @@ C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\Microsoft.Exte
 C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\MySqlConnector.dll
+C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Irakli\source\repos\webapi\tests\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll

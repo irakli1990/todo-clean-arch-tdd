@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\feature\todo\data\" />
-    <Folder Include="src\feature\todo\controller\" />
+    <Folder Include="src\feature\city\controller\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
   </ItemGroup>
 

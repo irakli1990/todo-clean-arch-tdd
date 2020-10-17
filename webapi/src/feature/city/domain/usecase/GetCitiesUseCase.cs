@@ -11,18 +11,18 @@ using webapi.src.feature.todo.domain.repository;
 
 namespace webapi.src.feature.todo.domain.usecase
 {
-    public class GetTodoUseCase : UseCase<List<Todo>, NoParams>
+    public class GetCitiesUseCase : UseCase<List<City>, NoParams>
     {
-        private readonly TodoRepository todoRepository;
+        private readonly repository.CityRepository todoRepository;
 
-        public GetTodoUseCase(TodoRepository todoRepository)
+        public GetCitiesUseCase(repository.CityRepository todoRepository)
         {
             this.todoRepository = todoRepository;
         }
 
-        public Task<Pair<Failure, List<Todo>>> execiute(NoParams @params)
+        public Task<Pair<Failure, List<City>>> execiute(NoParams @params)
         {
-            return this.todoRepository.GetTodos();
+            return this.todoRepository.GetCities();
         }
     }
 
