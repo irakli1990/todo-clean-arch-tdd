@@ -13,9 +13,9 @@ namespace webapi.src.feature.todo.domain.usecase
 {
     public class GetCitiesUseCase : UseCase<List<City>, NoParams>
     {
-        private readonly repository.CityRepository todoRepository;
+        private readonly CityRepository todoRepository;
 
-        public GetCitiesUseCase(repository.CityRepository todoRepository)
+        public GetCitiesUseCase(CityRepository todoRepository)
         {
             this.todoRepository = todoRepository;
         }

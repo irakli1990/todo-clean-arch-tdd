@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using webapi.src.core.database;
+using webapi.src.core.errors;
 using webapi.src.feature.todo.data.models;
 using webapi.src.feature.todo.domain.entity;
 
@@ -13,30 +15,67 @@ namespace webapi.src.feature.city.data.datasource
     {
 
 
-        public List<CityModel> GetCity();
+        public Task<List<CityModel>> GetCities();
 
-        public void DelteCity(CityModel city);
+        public Task DelteCity(CityModel city);
 
-        public CityModel GetCityById(long id);
+        public Task<CityModel> GetCityById(long id);
 
-        public CityModel EditCity(CityModel city);
+        public Task<CityModel> EditCity(CityModel city);
 
 
 
     }
-    public class CityLocalDataSourceImpl : DbContext, CityLocalDataSource
+    public class CityLocalDataSourceImpl : CityLocalDataSource
     {
-        public DbSet<CityModel> cityModels { get; set; }
-        CityLocalDataSourceImpl(DbContextOptions<CityLocalDataSourceImpl> options) : base(options)
-        {
+        private readonly DataBaseContext _context;
 
+
+        public CityLocalDataSourceImpl(DataBaseContext context)
+        {
+            _context = context;
         }
 
-        public List<CityModel> GetCity()
+        public Task DelteCity(CityModel city)
+        {
+            var result = this._context.cities.Remove(city);
+            if(result.State == EntityState.Deleted)
+            {
+                return null;
+            }
+            else
+            {
+                throw new ServerException();
+            }
+         
+        }
+
+        public Task<CityModel> EditCity(CityModel city)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<CityModel>> GetCities()
+        {
+            var cities = _context.cities.ToList();
+            if (cities != null)
+            {
+                return Task.FromResult(cities);
+            }
+            else
+            {
+                throw new ServerException();
+            }
+        }
+
+     
+
+        public Task<CityModel> GetCityById(long id)
         {
             try
             {
-                return this.cityModels.ToList();
+                var city = this._context.cities.Find(id);
+                return Task.FromResult(city);
             }
             catch (Exception e)
             {
@@ -44,51 +83,6 @@ namespace webapi.src.feature.city.data.datasource
             }
         }
 
-        public void DelteCity(CityModel city)
-        {
-            try
-            {
-                this.cityModels.Remove(city);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public CityModel GetCityById(long id)
-        {
-            try
-            {
-                return this.cityModels.Find(id);
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        public CityModel EditCity(CityModel city)
-        {
-            try
-            {
-                var result = this.GetCityById(city.Id);
-                if (result != null)
-                {
-                    result.Name = city.Name;
-                    result.CountryCode = city.CountryCode;
-                    result.District = city.District;
-                    result.Population = city.Population;
-                }
-
-                this.cityModels.Add(result);
-                return result;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
+    
     }
 }

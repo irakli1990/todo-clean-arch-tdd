@@ -45,5 +45,10 @@ namespace webapi.src.feature.todo.domain.entity
         {
             return this.Equals(obj as City);
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id, Name, CountryCode, District, Population);
+        }
     }
 }
